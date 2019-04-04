@@ -2,9 +2,9 @@
 var elShoppingList = document.getElementById('shoppingList');
 
 // Add some list-items to the list (append each one using +=)
-function printItem(qty, item) {
-  elShoppingList.innerHTML += `<li>${qty} ${item}</li>`;
-}
+// function printItem(qty, item) {
+//   elShoppingList.innerHTML += `<li>${qty} ${item}</li>`;
+// }
 
 // printItem(3, "Apples");
 // printItem(2, "Steaks");
@@ -17,6 +17,7 @@ function printItem(qty, item) {
 var myList = [
   { qty: 3, name: `Apples`, dept: `Produce` },
   { qty: 2, name: `Steaks`, dept: `Meat` },
+  { qty: 24, name: `Cherries`, dept: `Produce` },
 ];
 
 
@@ -25,14 +26,31 @@ var myList = [
 function addToList(qtyIn, nameIn, deptIn) {
   // Add something to the array dynamically
   myList.push( { qty: qtyIn, name: nameIn, dept: deptIn } );
+  // Reprint my list
+  printTheList();
 }
 
 
 
-// 3. Modify the printItem function so that it prints from the array
+document.getElementById('newItem').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  var theNewItem = document.getElementById('item').value;
+
+  // 4. Add a new item to myList (use the function we created!)
+
+});
 
 
+// 3. Write a function that prints the entire array
+function printTheList() {
+  var htmlList = myList.map( (item) => `<li>${item.qty} ${item.name} (${item.dept})</li>` )
+  elShoppingList.innerHTML = htmlList.join('');
+}
 
+
+// Print the list for the very first time
+printTheList();
 
 // Rocco will:
 //    - Write a quick form
