@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+
+    <main class="layout">
+      <header class="header">
+        <h1>Shopping List</h1>
+      </header>
+
+      <form id="newItem" class="newitem" autocomplete="off">
+        <label for="item" class="line-label">New Item</label>
+        <div class="addnew">
+          <input type="text" name="item" id="item" class="form-component inpt" placeholder="What do you need?" required>
+          <input type="submit" value="Add" class="form-component btn">
+        </div>
+      </form>
+
+      <ul id="shoppingList"></ul>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
