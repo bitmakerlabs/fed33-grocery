@@ -15,8 +15,8 @@ var elShoppingList = document.getElementById('shoppingList');
 
 // 1. Create an Array that will hold our shopping list
 var myList = [
-  { qty: 3, name: `Apples`, dept: `Produce` },
-  { qty: 2, name: `Steaks`, dept: `Meat` },
+  { qty: 3,  name: `Apples`,   dept: `Produce` },
+  { qty: 2,  name: `Steaks`,   dept: `Meat` },
   { qty: 24, name: `Cherries`, dept: `Produce` },
 ];
 
@@ -33,18 +33,21 @@ function addToList(qtyIn, nameIn, deptIn) {
 
 
 document.getElementById('newItem').addEventListener('submit', function (e) {
+  // Prevent our application from ACTUALLY submitting (which is to send data elsewhere)
   e.preventDefault();
 
+  // Store the value given by the user
   var theNewItem = document.getElementById('item').value;
 
   // 4. Add a new item to myList (use the function we created!)
+  addToList(1, theNewItem, '');
 
 });
 
 
 // 3. Write a function that prints the entire array
 function printTheList() {
-  var htmlList = myList.map( (item) => `<li>${item.qty} ${item.name} (${item.dept})</li>` )
+  var htmlList = myList.map( item => `<li>${item.qty} ${item.name} (${item.dept})</li>` )
   elShoppingList.innerHTML = htmlList.join('');
 }
 
