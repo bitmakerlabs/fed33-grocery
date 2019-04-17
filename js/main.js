@@ -1,16 +1,7 @@
-// Store the location of the list
+// Store the location of the items we wish to interact with (<ol> and <form>)
 var elShoppingList = document.getElementById('shoppingList');
+var elNewItemForm = document.getElementById('newItem');
 
-// Add some list-items to the list (append each one using +=)
-// function printItem(qty, item) {
-//   elShoppingList.innerHTML += `<li>${qty} ${item}</li>`;
-// }
-
-// printItem(3, "Apples");
-// printItem(2, "Steaks");
-// printItem(3, "Carrots");
-// printItem(10, "Cherries");
-// printItem(2, "Boxes of Pasta");
 
 
 // 1. Create an Array that will hold our shopping list
@@ -22,7 +13,6 @@ var myList = [
 
 
 // 2. Write a function called "addToList" that will add new items to our array
-
 function addToList(qtyIn, nameIn, deptIn) {
   // Add something to the array dynamically
   myList.push( { qty: qtyIn, name: nameIn, dept: deptIn } );
@@ -31,8 +21,8 @@ function addToList(qtyIn, nameIn, deptIn) {
 }
 
 
-
-document.getElementById('newItem').addEventListener('submit', function (e) {
+// 4. When someone submits the form, grab the input and add the new item to the array
+elNewItemForm.addEventListener('submit', function (e) {
   // Prevent our application from ACTUALLY submitting (which is to send data elsewhere)
   e.preventDefault();
 
@@ -42,28 +32,26 @@ document.getElementById('newItem').addEventListener('submit', function (e) {
   // 4. Add a new item to myList (use the function we created!)
   addToList(1, theNewItem, '');
 
+  // Reset the form
+  elNewItemForm.reset();
+
 });
 
 
 // 3. Write a function that prints the entire array
 function printTheList() {
+
+  // MAP each item in the "myList" Array to one <li>, so we have an array of list item stored as strings
   var htmlList = myList.map( item => `
     <li class="${item.dept}">
-      <input type="number" value="${item.qty}">
+      <input type="number" class="form-component nmbr" value="${item.qty}">
       <span>${item.name}</span>
     </li>` )
+
+  // JOIN the temporary array of strings together as one long string of HTML, add to the document
   elShoppingList.innerHTML = htmlList.join('');
 }
 
 
-// Print the list for the very first time
+// Print the list for the very first time to start the application
 printTheList();
-
-// Rocco will:
-//    - Write a quick form
-//    - Add some styling
-// As a group:
-//    - Talk about events
-//    - Use that knowledge to get info from the user
-//    - Add the new item to our myList
-//    - Print out the list
