@@ -15,9 +15,9 @@ var elShoppingList = document.getElementById('shoppingList');
 
 // 1. Create an Array that will hold our shopping list
 var myList = [
-  { qty: 3,  name: `Apples`,   dept: `Produce` },
-  { qty: 2,  name: `Steaks`,   dept: `Meat` },
-  { qty: 24, name: `Cherries`, dept: `Produce` },
+  { qty: 3,  name: `Apples`,   dept: `produce` },
+  { qty: 2,  name: `Steaks`,   dept: `meat` },
+  { qty: 24, name: `Cherries`, dept: `produce` },
 ];
 
 
@@ -47,7 +47,11 @@ document.getElementById('newItem').addEventListener('submit', function (e) {
 
 // 3. Write a function that prints the entire array
 function printTheList() {
-  var htmlList = myList.map( item => `<li>${item.qty} ${item.name} (${item.dept})</li>` )
+  var htmlList = myList.map( item => `
+    <li class="${item.dept}">
+      <input type="number" value="${item.qty}">
+      <span>${item.name}</span>
+    </li>` )
   elShoppingList.innerHTML = htmlList.join('');
 }
 
